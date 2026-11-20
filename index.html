@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Salgados PDI | Cardápio Online & Encomendas de Salgados</title>
+  
+  <!-- Meta tags para Instagram, WhatsApp e Redes Sociais -->
+  <meta name="description" content="Faça seu pedido online na Salgados PDI. Coxinhas, pastéis, esfirras, tortiletes e muito mais. Preços claros por unidade e entrega rápida pelo WhatsApp!" />
+  <meta property="og:title" content="Salgados PDI | Cardápio Online de Salgados para Festas" />
+  <meta property="og:description" content="Coxinhas crocantes, pastéis, esfirras e tortiletes para sua festa! Escolha as quantidades e peça direto pelo WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#ea580c" />
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              200: '#fed7aa',
+              500: '#f97316',
+              600: '#ea580c',
+              700: '#c2410c',
+              800: '#9a3412',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- CSS Customizado -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-[#faf7f5] text-slate-800 antialiased min-h-screen flex flex-col pb-28 sm:pb-16">
+
+  <!-- Barra de Aviso Superior -->
+  <header class="bg-amber-700 text-white text-[12px] sm:text-xs py-2 px-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-1.5 font-medium truncate">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="truncate">Aceitamos encomendas para festas e eventos!</span>
+      </div>
+      <a href="https://api.whatsapp.com/send?phone=5582996886925" target="_blank" class="hidden sm:inline-flex items-center gap-1.5 font-bold hover:underline text-amber-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-emerald-300" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2z"/>
+        </svg>
+        WhatsApp: (82) 99688-6925
+      </a>
+    </div>
+  </header>
+
+  <!-- Topbar / Navbar Principal -->
+  <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-30 border-b border-amber-100/80 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Marca / Logo -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 to-amber-500 text-white flex items-center justify-center font-black text-xl shadow-md shadow-amber-600/30 group-hover:scale-105 transition-transform">
+          🥟
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-slate-900 block leading-tight">
+            Salgados <span class="text-amber-600">PDI</span>
+          </span>
+          <span class="text-[10px] uppercase font-bold tracking-wider text-amber-700/80 block">
+            Cardápio de Encomendas
+          </span>
+        </div>
+      </a>
+
+      <!-- Ações no Topo -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Compartilhar (Instagram / Zap) -->
+        <button 
+          onclick="shareMenu()" 
+          class="p-2 sm:px-3 sm:py-2 text-xs font-semibold text-slate-700 hover:text-amber-600 bg-slate-100 hover:bg-amber-50 rounded-xl transition flex items-center gap-1.5"
+          title="Compartilhar Cardápio"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+          <span class="hidden sm:inline">Compartilhar</span>
+        </button>
+
+        <!-- Botão WhatsApp Direto -->
+        <a 
+          href="https://api.whatsapp.com/send?phone=5582996886925" 
+          target="_blank"
+          class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl transition"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-emerald-600" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+          </svg>
+          <span>Falar no Zap</span>
+        </a>
+
+        <!-- Botão Carrinho Header -->
+        <button 
+          onclick="openCart()"
+          class="relative p-2.5 bg-amber-600 hover:bg-amber-700 text-white rounded-xl shadow-md transition flex items-center gap-2"
+          aria-label="Abrir Carrinho"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <span class="hidden md:inline text-xs font-bold">Meu Pedido</span>
+          <!-- Badge -->
+          <span class="cart-count-badge hidden absolute -top-1.5 -right-1.5 bg-rose-600 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow">
+            0
+          </span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Hero Section & Apresentação -->
+  <section class="bg-gradient-to-b from-amber-500/10 via-amber-500/5 to-transparent pt-6 pb-6 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="bg-gradient-to-br from-amber-600 via-amber-700 to-amber-800 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+        
+        <!-- Elemento Decorativo -->
+        <div class="absolute -right-10 -bottom-10 w-56 h-56 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute -left-10 -top-10 w-44 h-44 bg-amber-400/20 rounded-full blur-xl pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold text-amber-100 mb-3 border border-white/20">
+            <span>✨</span> Cardápio Oficial para Instagram & WhatsApp
+          </div>
+
+          <h1 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight mb-2">
+            Salgados PDI: O Sabor Que Conquista Toda Festa!
+          </h1>
+
+          <p class="text-amber-100 text-sm sm:text-base mb-5 leading-relaxed">
+            Coxinhas douradas, pastéis crocantes, esfirras macias e tortiletes gourmet. Monte seu cento ou encomende em porções de <b>50, 100, 150 até 500 salgados</b> com total praticidade!
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 text-xs">
+            <div class="flex items-center gap-1.5 bg-black/20 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/10">
+              <span>⏱️</span>
+              <span>Encomendas com 24h a 48h de antecedência</span>
+            </div>
+            <div class="flex items-center gap-1.5 bg-black/20 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/10">
+              <span>🛵</span>
+              <span>Entrega no local ou retirada</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE PREÇOS TRANSPARENTE E LEGÍVEL (Conforme solicitado) -->
+  <section class="px-4 sm:px-6 py-4">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Cabeçalho da Seção de Preços -->
+      <div class="bg-amber-50 rounded-2xl p-4 sm:p-6 border border-amber-200/80 mb-6 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xl">🏷️</span>
+              <h2 class="text-lg sm:text-xl font-black text-slate-900">
+                Guia de Preços & Valores por Unidade
+              </h2>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 mt-0.5">
+              Confira nossa tabela transparente antes de escolher seus itens. Você pode misturar diferentes sabores em múltiplos de 50!
+            </p>
+          </div>
+
+          <div class="inline-flex items-center gap-2 bg-white px-3 py-1.5 rounded-xl border border-amber-200 text-xs text-amber-800 font-semibold shadow-xs flex-shrink-0 self-start sm:self-auto">
+            <span>💡 Mínimo de 50 un por sabor</span>
+          </div>
+        </div>
+
+        <!-- Cards das Categorias de Preço -->
+        <div id="pricingTiersContainer" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Injetado dinamicamente via JS com dados claros -->
+        </div>
+
+        <!-- Dica de Cálculo de Festa -->
+        <div class="mt-4 pt-3 border-t border-amber-200/60 flex items-center justify-between flex-wrap gap-2 text-xs text-slate-600">
+          <div class="flex items-center gap-1.5">
+            <span class="font-bold text-amber-800">📏 Como calcular para sua festa:</span>
+            <span>Recomendamos em média de <b>10 a 15 salgados por pessoa</b>.</span>
+          </div>
+          <span class="text-slate-500 italic">Ex: Para 20 convidados, sugerimos de 200 a 250 salgados.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Filtros de Busca e Categorias -->
+  <section class="px-4 sm:px-6 sticky top-16 z-20 bg-[#faf7f5]/95 backdrop-blur-sm py-2">
+    <div class="max-w-6xl mx-auto space-y-3">
+      
+      <!-- Linha de Busca e Contador -->
+      <div class="flex items-center gap-3">
+        <div class="relative flex-1">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </span>
+          <input 
+            type="text" 
+            id="searchProductInput"
+            placeholder="Buscar por coxinha, pastel, esfirra, tortilete..." 
+            class="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent shadow-xs transition"
+          />
+        </div>
+
+        <span id="itemsCount" class="text-xs font-bold text-slate-500 whitespace-nowrap bg-white px-3 py-2.5 rounded-xl border border-slate-200 shadow-xs">
+          0 itens
+        </span>
+      </div>
+
+      <!-- Abas de Categorias (Scroll Horizontal no Mobile) -->
+      <div class="category-scroll flex items-center gap-2 overflow-x-auto pb-1">
+        <button 
+          data-category="todos" 
+          class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition whitespace-nowrap bg-amber-600 text-white shadow"
+        >
+          🌟 Todos os Sabores
+        </button>
+        <button 
+          data-category="fritos" 
+          class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition whitespace-nowrap bg-white text-slate-700 border border-slate-200 hover:border-amber-400"
+        >
+          🥟 Salgados Fritos
+        </button>
+        <button 
+          data-category="assados" 
+          class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition whitespace-nowrap bg-white text-slate-700 border border-slate-200 hover:border-amber-400"
+        >
+          🥐 Salgados Assados
+        </button>
+        <button 
+          data-category="tortiletes" 
+          class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition whitespace-nowrap bg-white text-slate-700 border border-slate-200 hover:border-amber-400"
+        >
+          🥧 Tortiletes & Especiais
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Grid de Produtos / Cardápio -->
+  <main class="px-4 sm:px-6 py-4 flex-1">
+    <div class="max-w-6xl mx-auto">
+      <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Renderizado dinamicamente via JS -->
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL / TELA DE ESCOLHER QUANTIDADE (Bottom-sheet no celular) -->
+  <div id="quantityModal" class="hidden fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <!-- Backdrop escuro -->
+    <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity" onclick="closeQuantityModal()"></div>
+
+    <div class="min-h-full flex items-center justify-center p-0 sm:p-4 text-center modal-container">
+      <div 
+        id="quantityModalContent" 
+        class="modal-content relative bg-white text-left shadow-2xl transition-all transform w-full sm:max-w-lg rounded-t-3xl sm:rounded-3xl overflow-hidden flex flex-col max-h-[92vh]"
+      >
+        
+        <!-- Puxador Mobile -->
+        <div class="sm:hidden w-12 h-1.5 bg-slate-200 rounded-full mx-auto mt-3 mb-1"></div>
+
+        <!-- Header do Modal -->
+        <div class="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-lg">
+              🥟
+            </span>
+            <div>
+              <h3 class="text-base sm:text-lg font-black text-slate-900" id="modal-title">
+                Informe a Quantidade
+              </h3>
+              <p class="text-xs text-slate-500">Selecione quantas unidades encomendar</p>
+            </div>
+          </div>
+          <button 
+            onclick="closeQuantityModal()" 
+            class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition"
+          >
+            ✕
+          </button>
+        </div>
+
+        <!-- Corpo do Modal com Scroll -->
+        <div class="p-4 sm:p-6 overflow-y-auto space-y-5">
+          
+          <!-- Resumo do Produto Selecionado -->
+          <div class="flex items-center gap-4 bg-amber-50/60 p-3.5 rounded-2xl border border-amber-100">
+            <img 
+              id="modalProductImage" 
+              src="" 
+              alt="Produto" 
+              class="w-20 h-20 rounded-xl object-cover bg-amber-100 border border-amber-200/60 flex-shrink-0"
+            />
+            <div class="min-w-0 flex-1">
+              <h4 id="modalProductName" class="text-base font-extrabold text-slate-900 leading-tight">Nome</h4>
+              <p id="modalProductDesc" class="text-xs text-slate-500 line-clamp-2 mt-0.5">Descrição</p>
+              <div class="mt-2 flex items-center gap-2">
+                <span class="text-xs font-semibold text-slate-600">Preço unitário:</span>
+                <span id="modalUnitPrice" class="text-sm font-extrabold text-amber-700 bg-white px-2 py-0.5 rounded-md border border-amber-200">
+                  R$ 0,70 / un
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seleção de Quantidades Pré-definidas conforme solicitado:
+               50, 100, 150, 200, 250, 300, 350, 400, 450, 500 -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                1. Escolha a Quantidade Rápida:
+              </label>
+              <span class="text-[11px] text-amber-700 font-semibold">Múltiplos de 50</span>
+            </div>
+
+            <!-- Grade de botões rápidos -->
+            <div id="quantityPillsContainer" class="grid grid-cols-5 gap-2">
+              <!-- Injetado via JS: 50, 100, 150, 200, 250, 300, 350, 400, 450, 500 -->
+            </div>
+          </div>
+
+          <!-- Ajuste fino com botões +/- e input manual -->
+          <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200/80">
+            <label class="block text-xs font-bold text-slate-700 mb-2">
+              Ou personalize a quantidade exata:
+            </label>
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center">
+                <button 
+                  type="button" 
+                  onclick="adjustQuantity(-50)" 
+                  class="w-11 h-11 bg-white border border-slate-300 rounded-l-xl text-lg font-bold text-slate-700 hover:bg-slate-100 active:bg-slate-200 transition flex items-center justify-center shadow-xs"
+                >
+                  -
+                </button>
+                <input 
+                  type="number" 
+                  id="customQuantityInput" 
+                  step="50" 
+                  min="50" 
+                  value="50" 
+                  onchange="onCustomQuantityChange(this)"
+                  class="w-20 h-11 text-center font-extrabold text-slate-900 border-t border-b border-slate-300 text-base focus:outline-none bg-white"
+                />
+                <button 
+                  type="button" 
+                  onclick="adjustQuantity(50)" 
+                  class="w-11 h-11 bg-white border border-slate-300 rounded-r-xl text-lg font-bold text-slate-700 hover:bg-slate-100 active:bg-slate-200 transition flex items-center justify-center shadow-xs"
+                >
+                  +
+                </button>
+              </div>
+
+              <div class="text-right">
+                <span class="text-[11px] text-slate-500 block">Subtotal deste item:</span>
+                <span id="modalSummaryTotal" class="text-lg font-black text-amber-700">R$ 35,00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Observação Opcional do Item -->
+          <div>
+            <label for="modalProductNotes" class="block text-xs font-bold text-slate-700 mb-1">
+              Observação para este sabor (opcional):
+            </label>
+            <input 
+              type="text" 
+              id="modalProductNotes" 
+              placeholder="Ex: Fritar bem douradinho, colocar em embalagem separada..." 
+              class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+            />
+          </div>
+
+        </div>
+
+        <!-- Rodapé do Modal / Botão Adicionar -->
+        <div class="p-4 sm:p-5 border-t border-slate-100 bg-slate-50/80 flex items-center justify-between gap-3">
+          <div class="text-left">
+            <span class="text-[11px] text-slate-500 block">Total a adicionar:</span>
+            <span id="modalSummaryQuantity" class="text-sm font-extrabold text-slate-800">50 unidades</span>
+          </div>
+
+          <button 
+            type="button" 
+            onclick="addToCartFromModal()"
+            class="flex-1 py-3 px-5 bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white font-extrabold text-sm rounded-xl shadow-md hover:shadow-lg transition flex items-center justify-center gap-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <span>Adicionar • </span>
+            <span id="modalAddButtonTotal">R$ 35,00</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- BARRA FLUTUANTE INFERIOR (Sticky Mobile Bottom Bar) -->
+  <div 
+    id="floatingCartBar" 
+    class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-amber-200 p-3 sm:p-4 shadow-2xl transition-transform duration-300 translate-y-full"
+  >
+    <div class="max-w-4xl mx-auto flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-xl bg-amber-600 text-white flex items-center justify-center text-xl shadow-md relative">
+          🛒
+          <span class="cart-count-badge absolute -top-1.5 -right-1.5 bg-rose-600 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">
+            0
+          </span>
+        </div>
+        <div>
+          <span id="floatingCartUnits" class="text-xs font-bold text-slate-700 block leading-tight">0 salgados</span>
+          <span id="floatingCartTotal" class="text-base sm:text-lg font-black text-amber-700 block leading-tight">R$ 0,00</span>
+        </div>
+      </div>
+
+      <button 
+        onclick="openCart()" 
+        class="py-3 px-5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-black text-sm rounded-xl shadow-md hover:shadow-lg transition flex items-center gap-2 active:scale-95"
+      >
+        <span>Ver Pedido</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- DRAWER / MODAL DO CARRINHO & CHECKOUT -->
+  <div id="cartDrawer" class="hidden fixed inset-0 z-50 overflow-hidden" aria-labelledby="cart-title" role="dialog" aria-modal="true">
+    <!-- Overlay -->
+    <div id="cartOverlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity opacity-0" onclick="closeCart()"></div>
+
+    <div class="fixed inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
+      <div 
+        id="cartPanel" 
+        class="w-screen max-w-md bg-white shadow-2xl transition-transform duration-300 transform translate-x-full flex flex-col h-full"
+      >
+        <!-- Header do Carrinho -->
+        <div class="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between bg-amber-50/50">
+          <div class="flex items-center gap-2.5">
+            <span class="w-9 h-9 rounded-xl bg-amber-600 text-white flex items-center justify-center text-lg shadow-sm">
+              🛍️
+            </span>
+            <div>
+              <h3 class="text-base font-black text-slate-900" id="cart-title">Resumo do Pedido</h3>
+              <p class="text-xs text-slate-500">Confira seus itens e preencha os dados</p>
+            </div>
+          </div>
+          <button 
+            onclick="closeCart()" 
+            class="w-8 h-8 rounded-full bg-white hover:bg-slate-100 text-slate-500 border border-slate-200 flex items-center justify-center transition"
+          >
+            ✕
+          </button>
+        </div>
+
+        <!-- Conteúdo do Carrinho (Scrollable) -->
+        <div class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-5">
+          
+          <!-- Estado Vazio -->
+          <div id="cartEmptyState" class="py-16 text-center">
+            <div class="w-20 h-20 rounded-full bg-amber-100 text-amber-600 text-4xl flex items-center justify-center mx-auto mb-4">
+              🥟
+            </div>
+            <h4 class="text-lg font-bold text-slate-800 mb-1">Seu carrinho está vazio</h4>
+            <p class="text-xs text-slate-500 max-w-xs mx-auto mb-5">
+              Navegue pelo cardápio, clique no item desejado e selecione a quantidade para começar seu pedido!
+            </p>
+            <button 
+              onclick="closeCart()" 
+              class="px-5 py-2.5 bg-amber-600 text-white font-bold text-sm rounded-xl hover:bg-amber-700 transition"
+            >
+              Escolher Salgados
+            </button>
+          </div>
+
+          <!-- Estado Preenchido -->
+          <div id="cartFilledState" class="space-y-5 hidden">
+            
+            <!-- Badge de Estimativa de Pessoas -->
+            <div id="cartEstimateBadge"></div>
+
+            <!-- Lista de Itens Adicionados -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Itens Selecionados</span>
+                <button onclick="clearCart()" class="text-[11px] text-rose-600 hover:underline font-semibold">
+                  Limpar tudo
+                </button>
+              </div>
+              <div id="cartItemsList" class="space-y-2.5">
+                <!-- Injetado dinamicamente via JS -->
+              </div>
+            </div>
+
+            <!-- FORMULÁRIO DE DADOS DO CLIENTE & ENTREGA -->
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 space-y-4">
+              <div class="flex items-center gap-2 border-b border-slate-200/60 pb-2">
+                <span class="text-base">📍</span>
+                <h4 class="text-xs font-black text-slate-800 uppercase tracking-wider">
+                  Dados para Entrega & Atendimento
+                </h4>
+              </div>
+
+              <!-- Nome Completo (Obrigatório) -->
+              <div>
+                <label for="customerName" class="block text-xs font-bold text-slate-700 mb-1">
+                  Seu Nome Completo *
+                </label>
+                <input 
+                  type="text" 
+                  id="customerName" 
+                  placeholder="Ex: Carlos Eduardo Silva" 
+                  required
+                  class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                />
+              </div>
+
+              <!-- WhatsApp de Contato -->
+              <div>
+                <label for="customerPhone" class="block text-xs font-bold text-slate-700 mb-1">
+                  Seu WhatsApp / Telefone
+                </label>
+                <input 
+                  type="tel" 
+                  id="customerPhone" 
+                  placeholder="(82) 99999-9999" 
+                  class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                />
+              </div>
+
+              <!-- Tipo de Entrega: Retirada ou Entrega -->
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-2">
+                  Como deseja receber o pedido?
+                </label>
+                <div class="grid grid-cols-2 gap-2">
+                  <label class="flex items-center gap-2 p-2.5 bg-white border border-slate-200 rounded-xl cursor-pointer hover:border-amber-400 transition text-xs font-bold text-slate-700">
+                    <input type="radio" name="deliveryType" value="Entrega" checked onchange="toggleDeliveryAddress('entrega')" class="custom-radio" />
+                    <span>🛵 Entrega em Casa</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2.5 bg-white border border-slate-200 rounded-xl cursor-pointer hover:border-amber-400 transition text-xs font-bold text-slate-700">
+                    <input type="radio" name="deliveryType" value="Retirada" onchange="toggleDeliveryAddress('retirada')" class="custom-radio" />
+                    <span>🏬 Retirar no Local</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Seção de Endereço de Entrega -->
+              <div id="deliveryAddressSection" class="space-y-3 pt-1">
+                <div class="grid grid-cols-3 gap-2">
+                  <div class="col-span-2">
+                    <label for="customerStreet" class="block text-[11px] font-bold text-slate-600 mb-1">
+                      Rua / Avenida *
+                    </label>
+                    <input 
+                      type="text" 
+                      id="customerStreet" 
+                      placeholder="Ex: Rua das Flores" 
+                      class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    />
+                  </div>
+                  <div>
+                    <label for="customerNumber" class="block text-[11px] font-bold text-slate-600 mb-1">
+                      Número
+                    </label>
+                    <input 
+                      type="text" 
+                      id="customerNumber" 
+                      placeholder="123" 
+                      class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="customerNeighborhood" class="block text-[11px] font-bold text-slate-600 mb-1">
+                    Bairro / Cidade *
+                  </label>
+                  <input 
+                    type="text" 
+                    id="customerNeighborhood" 
+                    placeholder="Ex: Centro, Ponta Verde, etc." 
+                    class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  />
+                </div>
+
+                <div>
+                  <label for="customerReference" class="block text-[11px] font-bold text-slate-600 mb-1">
+                    Ponto de Referência / Complemento
+                  </label>
+                  <input 
+                    type="text" 
+                    id="customerReference" 
+                    placeholder="Ex: Próximo à praça / Bloco B Apt 301" 
+                    class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  />
+                </div>
+              </div>
+
+              <!-- Info de Retirada -->
+              <div id="pickupInfoSection" class="hidden p-3 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900">
+                <b>Local de Retirada:</b> Salgados PDI. O endereço exato de retirada será confirmado no WhatsApp assim que o pedido for enviado.
+              </div>
+
+              <!-- Data e Horário -->
+              <div class="grid grid-cols-2 gap-2 pt-1">
+                <div>
+                  <label for="orderDate" class="block text-[11px] font-bold text-slate-600 mb-1">
+                    Data Desejada
+                  </label>
+                  <input 
+                    type="date" 
+                    id="orderDate" 
+                    class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  />
+                </div>
+                <div>
+                  <label for="orderTime" class="block text-[11px] font-bold text-slate-600 mb-1">
+                    Horário Previsto
+                  </label>
+                  <input 
+                    type="time" 
+                    id="orderTime" 
+                    value="18:00"
+                    class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  />
+                </div>
+              </div>
+
+              <!-- Forma de Pagamento Pretendida -->
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1.5">
+                  Forma de Pagamento Pretendida
+                </label>
+                <div class="grid grid-cols-3 gap-1.5 text-xs">
+                  <label class="flex items-center gap-1.5 p-2 bg-white border border-slate-200 rounded-xl cursor-pointer hover:border-amber-400">
+                    <input type="radio" name="paymentMethod" value="Pix" checked onchange="togglePaymentChange('Pix')" class="custom-radio" />
+                    <span class="font-bold">Pix</span>
+                  </label>
+                  <label class="flex items-center gap-1.5 p-2 bg-white border border-slate-200 rounded-xl cursor-pointer hover:border-amber-400">
+                    <input type="radio" name="paymentMethod" value="Cartão" onchange="togglePaymentChange('Cartão')" class="custom-radio" />
+                    <span class="font-bold">Cartão</span>
+                  </label>
+                  <label class="flex items-center gap-1.5 p-2 bg-white border border-slate-200 rounded-xl cursor-pointer hover:border-amber-400">
+                    <input type="radio" name="paymentMethod" value="Dinheiro" onchange="togglePaymentChange('Dinheiro')" class="custom-radio" />
+                    <span class="font-bold">Dinheiro</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Troco se dinheiro -->
+              <div id="cashChangeSection" class="hidden">
+                <label for="cashChangeInput" class="block text-[11px] font-bold text-slate-600 mb-1">
+                  Precisa de troco para quanto?
+                </label>
+                <input 
+                  type="text" 
+                  id="cashChangeInput" 
+                  placeholder="Ex: R$ 100,00 ou Não preciso" 
+                  class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-amber-500"
+                />
+              </div>
+
+              <!-- Observações Gerais -->
+              <div>
+                <label for="generalOrderNotes" class="block text-[11px] font-bold text-slate-600 mb-1">
+                  Observações Gerais do Pedido
+                </label>
+                <textarea 
+                  id="generalOrderNotes" 
+                  rows="2" 
+                  placeholder="Ex: Entregar quentinho na hora da festa, chamar no interfone..." 
+                  class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-amber-500"
+                ></textarea>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Rodapé do Carrinho com Totais e Botão do WhatsApp -->
+        <div id="cartFooterActions" class="p-4 sm:p-5 border-t border-slate-100 bg-slate-50 space-y-3">
+          
+          <div class="space-y-1.5 text-xs text-slate-600">
+            <div class="flex items-center justify-between">
+              <span>Total de Salgados:</span>
+              <span id="cartDrawerTotalSalgados" class="font-bold text-slate-900">0 unidades</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Subtotal dos Itens:</span>
+              <span id="cartDrawerSubtotal" class="font-bold text-slate-900">R$ 0,00</span>
+            </div>
+            <div class="flex items-center justify-between text-base font-black text-slate-900 pt-2 border-t border-slate-200">
+              <span>Valor Total:</span>
+              <span id="cartDrawerFinalTotal" class="text-amber-700 text-lg">R$ 0,00</span>
+            </div>
+            <p class="text-[11px] text-slate-400 italic text-right">Taxa de entrega combinada via WhatsApp</p>
+          </div>
+
+          <!-- BOTÃO PRINCIPAL: FINALIZAR PEDIDO NO WHATSAPP -->
+          <button 
+            type="button"
+            onclick="finalizeOrder()"
+            class="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-extrabold text-sm sm:text-base rounded-2xl shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2.5 pulse-button"
+          >
+            <!-- Ícone WhatsApp Oficial -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zM17.46 16.47c-.23.65-1.33 1.25-1.84 1.33-.49.07-1.12.1-3.23-.77-2.69-1.12-4.42-3.85-4.55-4.03-.14-.18-1.08-1.44-1.08-2.75 0-1.31.69-1.95.93-2.22.24-.26.53-.33.71-.33.18 0 .36 0 .52.01.17.01.4.06.6.53.22.52.75 1.83.82 1.97.07.14.11.31.02.49-.09.18-.14.29-.27.45-.14.16-.29.35-.42.47-.14.14-.29.3-.12.59.16.29.73 1.21 1.57 1.96 1.08.96 2 1.26 2.29 1.4.29.14.45.12.62-.07.17-.19.73-.85.92-1.14.19-.29.38-.24.64-.15.26.09 1.66.78 1.95.92.29.14.48.22.55.34.07.12.07.72-.16 1.37z"/>
+            </svg>
+            <span>Finalizar Pedido no WhatsApp</span>
+          </button>
+
+          <p class="text-[11px] text-center text-slate-500">
+            Você será direcionado para <b>(82) 99688-6925</b> com os itens e quantidades prontos!
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICAÇÃO -->
+  <div id="toast" class="bg-slate-900 text-white text-xs sm:text-sm font-semibold px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-2 border border-slate-700 max-w-sm w-full mx-auto">
+    <span class="text-base">🔔</span>
+    <span id="toastText" class="flex-1">Mensagem de aviso</span>
+  </div>
+
+  <!-- Rodapé Institucional -->
+  <footer class="bg-slate-900 text-slate-400 text-xs py-8 px-4 sm:px-6 mt-12 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div>
+        <h4 class="text-white font-black text-sm mb-1">Salgados PDI</h4>
+        <p class="text-slate-400 text-xs">Os melhores salgados artesanais para a sua festa ou comemoração!</p>
+        <p class="text-slate-500 text-[11px] mt-1">Atendimento: WhatsApp (82) 99688-6925 • Alagoas</p>
+      </div>
+
+      <div class="flex items-center gap-4 text-slate-400">
+        <a 
+          href="https://api.whatsapp.com/send?phone=5582996886925" 
+          target="_blank" 
+          class="hover:text-amber-400 transition flex items-center gap-1 font-semibold"
+        >
+          <span>WhatsApp: (82) 99688-6925</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2 text-center">
+      <span>© 2026 Salgados PDI. Todos os direitos reservados.</span>
+      <span>Cardápio online otimizado para celulares e Instagram.</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

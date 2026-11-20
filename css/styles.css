@@ -1,0 +1,205 @@
+/* Estilos customizados - Salgados PDI */
+
+/* Variáveis e Suavização */
+:root {
+  --primary: #ea580c;
+  --primary-hover: #c2410c;
+  --primary-light: #fff7ed;
+  --whatsapp: #25d366;
+  --whatsapp-hover: #128c7e;
+  --dark: #1e293b;
+  --gray-bg: #f8fafc;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #faf7f5;
+  color: #334155;
+  overflow-x: hidden;
+}
+
+/* Scrollbar Bonita */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animações */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.9); opacity: 0; }
+  70% { transform: scale(1.03); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(234, 88, 12, 0);
+  }
+}
+
+@keyframes bounceSubtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+.animate-pop-in {
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.pulse-button {
+  animation: pulseGlow 2s infinite;
+}
+
+/* Cardápio e Itens */
+.item-card {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px -10px rgba(234, 88, 12, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+/* Botões de Seleção de Quantidade */
+.qty-pill {
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.qty-pill:hover {
+  border-color: #ea580c;
+  background-color: #fff7ed;
+  color: #ea580c;
+}
+
+.qty-pill.active {
+  background-color: #ea580c;
+  color: #ffffff;
+  border-color: #ea580c;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
+  transform: scale(1.03);
+}
+
+/* Modal Bottom-Sheet Mobile First */
+@media (max-width: 640px) {
+  .modal-container {
+    align-items: flex-end !important;
+    padding: 0 !important;
+  }
+  
+  .modal-content {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-top-left-radius: 1.5rem !important;
+    border-top-right-radius: 1.5rem !important;
+    max-height: 92vh !important;
+    width: 100% !important;
+  }
+}
+
+/* Efeito ao Clicar / Toque */
+button, .clickable {
+  touch-action: manipulation;
+}
+
+button:active, .clickable:active {
+  transform: scale(0.97);
+}
+
+/* Badges */
+.badge-price {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+}
+
+/* Imagens com aspect-ratio consistente */
+.product-image-container {
+  aspect-ratio: 16 / 10;
+  position: relative;
+  overflow: hidden;
+  background-color: #fce7db;
+}
+
+.product-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.item-card:hover .product-image-container img {
+  transform: scale(1.06);
+}
+
+/* Toast Notificações */
+#toast {
+  position: fixed;
+  bottom: 95px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+/* Tab de categorias com scroll suave no mobile */
+.category-scroll {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.category-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Estilo para Radio Buttons e Checkboxes customizados */
+.custom-radio {
+  accent-color: #ea580c;
+}
